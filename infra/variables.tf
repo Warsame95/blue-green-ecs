@@ -15,3 +15,8 @@ variable "az" {
   type    = list(string)
   default = ["eu-west-2a", "eu-west-2b"]
 }
+
+variable "app_name" {
+  type = string
+  default = "url-shortener"
+}
