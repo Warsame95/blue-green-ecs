@@ -1,0 +1,12 @@
+variable vpc_cidr{
+    type = string
+}
+
+variable "vpc_name" {
+  type = string
+}
+
+variable "az" {
+    type = list(string)
+    default = ["eu-west-2a", "eu-west-2b"]
+}
