@@ -3,11 +3,11 @@ output "alb_sg_id" {
 }
 
 output "dns_name" {
-  value = aws_lb.test.dns_name
+  value = aws_lb.main-alb.dns_name
 }
 
 output "zone_id" {
-  value = aws_lb.test.zone_id
+  value = aws_lb.main-alb.zone_id
 }
 
 output "target_group_arn" {

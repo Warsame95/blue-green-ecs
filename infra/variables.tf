@@ -20,3 +20,7 @@ variable "app_name" {
   type = string
   default = "url-shortener"
 }
+
+variable "domain" {
+  type = string
+}
