@@ -6,7 +6,7 @@ output "dns_name" {
   value = aws_lb.main-alb.dns_name
 }
 
-output "zone_id" {
+output "alb_zone_id" {
   value = aws_lb.main-alb.zone_id
 }
 

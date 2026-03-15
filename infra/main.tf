@@ -15,6 +15,13 @@ module "alb" {
 module "dns" {
   source   = "./modules/dns"
   dns_name = module.alb.dns_name
-  zone_id  = module.alb.zone_id
+  alb_zone_id  = module.alb.alb_zone_id
   domain   = var.domain
+}
+
+module "acm" {
+  source = "./modules/acm"
+  domain = var.domain
+  app_name = var.app_name
+  zone_id = module.dns.zone_id
 }

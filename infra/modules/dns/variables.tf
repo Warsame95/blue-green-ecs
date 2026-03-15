@@ -1,4 +1,4 @@
-variable "zone_id" {
+variable "alb_zone_id" {
   type = string
 }
 
