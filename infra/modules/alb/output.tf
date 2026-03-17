@@ -13,3 +13,7 @@ output "alb_zone_id" {
 output "target_group_arn" {
   value = aws_lb_target_group.url-service-tg.arn
 }
+
+output "alb_arn" {
+  value = aws_lb.main-alb.arn
+}

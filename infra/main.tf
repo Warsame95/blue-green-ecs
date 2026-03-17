@@ -25,3 +25,9 @@ module "acm" {
   app_name = var.app_name
   zone_id = module.dns.zone_id
 }
+
+module "waf" {
+  source = "./modules/waf"
+  app_name = var.app_name
+  alb_arn = module.alb.alb_arn
+}
