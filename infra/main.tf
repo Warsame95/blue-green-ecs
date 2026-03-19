@@ -31,3 +31,10 @@ module "waf" {
   app_name = var.app_name
   alb_arn = module.alb.alb_arn
 }
+
+module "iam" {
+  source               = "./modules/iam"
+  execution_role_name  = var.execution_role_name
+  execution_policy_arn = var.execution_policy_arn
+  
+}
