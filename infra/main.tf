@@ -36,5 +36,18 @@ module "iam" {
   source               = "./modules/iam"
   execution_role_name  = var.execution_role_name
   execution_policy_arn = var.execution_policy_arn
+  task_role_name = var.task_role_name
+  dynamodb_table_arn = module.dynamodb.dynamodb_table_arn
   
+}
+
+module "dynamodb" {
+  source = "./modules/dynamodb"
+  app_name = var.app_name
+
+}
+
+module "ecs" {
+  source = "./modules/ecs"
+  app_name = var.app_name
 }
