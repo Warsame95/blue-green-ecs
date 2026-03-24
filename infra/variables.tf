@@ -39,3 +39,7 @@ variable "task_role_name" {
   type = string
   default = "ecsTaskRole"
 }
+
+variable "container_image" {
+  type = string
+}

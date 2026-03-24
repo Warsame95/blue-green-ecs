@@ -50,4 +50,8 @@ module "dynamodb" {
 module "ecs" {
   source = "./modules/ecs"
   app_name = var.app_name
+  region = var.region
+  execution_role_arn = module.iam.execution_role_arn
+  task_role_arn = module.iam.task_role_arn
+  container_image = var.container_image
 }
