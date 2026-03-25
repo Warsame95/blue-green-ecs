@@ -57,7 +57,7 @@ resource "aws_ecs_task_definition" "task" {
 
 resource "aws_ecs_service" "name" {
   name = var.app_name
-  cluster = aws_ecs_cluster.url_shortener_cluster
+  cluster = aws_ecs_cluster.url_shortener_cluster.arn
   task_definition = aws_ecs_task_definition.task.arn
   launch_type = "FARGATE"
 
