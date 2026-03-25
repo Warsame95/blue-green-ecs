@@ -42,4 +42,5 @@ variable "task_role_name" {
 
 variable "container_image" {
   type = string
+  default = "latest"
 }
