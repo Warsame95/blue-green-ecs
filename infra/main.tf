@@ -54,4 +54,6 @@ module "ecs" {
   execution_role_arn = module.iam.execution_role_arn
   task_role_arn = module.iam.task_role_arn
   container_image = var.container_image
+  private_subnet_ids = module.vpc.private_subnet_ids
+  target_group_arn   = module.alb.target_group_arn
 }

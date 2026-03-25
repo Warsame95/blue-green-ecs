@@ -18,3 +18,10 @@ variable "container_image" {
   type = string
 }
 
+variable "private_subnet_ids" {
+  type = list(string)
+}
+
+variable "target_group_arn" {
+  type = string
+}

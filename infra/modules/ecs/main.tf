@@ -54,3 +54,24 @@ resource "aws_ecs_task_definition" "task" {
   }
 
 }
+
+resource "aws_ecs_service" "name" {
+  name = var.app_name
+  cluster = aws_ecs_cluster.url_shortener_cluster
+  task_definition = aws_ecs_task_definition.task.arn
+  launch_type = "FARGATE"
+
+  desired_count = 2
+
+  network_configuration {
+    subnets = var.private_subnet_ids
+    security_groups = [aws_security_group.ecs-sg.id]
+    assign_public_ip = false
+  }
+
+  load_balancer {
+    container_name = var.app_name
+    container_port = 8080
+    target_group_arn = var.target_group_arn
+  }
+}
