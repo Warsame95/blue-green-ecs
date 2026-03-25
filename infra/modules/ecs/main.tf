@@ -75,3 +75,24 @@ resource "aws_ecs_service" "name" {
     target_group_arn = var.target_group_arn
   }
 }
+
+resource "aws_security_group" "ecs-sg" {
+  name        = "ecs-sg"
+  description = "Allows traffic coming from alb"
+  vpc_id      = var.vpc_id
+
+  ingress {
+    from_port = 8080
+    protocol = "tcp"
+    to_port = 8080 
+    security_groups = [ var.alb_sg_id ]
+  }
+
+  egress {
+    from_port = 0
+    protocol = "-1"
+    to_port = 0
+    cidr_blocks = [ "0.0.0.0/0" ]
+  }
+ 
+}

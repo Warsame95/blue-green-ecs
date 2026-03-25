@@ -56,4 +56,6 @@ module "ecs" {
   container_image = var.container_image
   private_subnet_ids = module.vpc.private_subnet_ids
   target_group_arn   = module.alb.target_group_arn
+  vpc_id             = module.vpc.vpc_id
+  alb_sg_id          = module.alb.alb_sg_id
 }
