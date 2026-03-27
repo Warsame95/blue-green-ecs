@@ -17,11 +17,15 @@ resource "aws_vpc_endpoint" "ecr-dkr" {
 resource "aws_vpc_endpoint" "s3" {
   vpc_id       = var.vpc_id
   region       = var.region
+  vpc_endpoint_type = "Gateway"
   service_name = "com.amazonaws.eu-west-2.s3"
+  route_table_ids = var.private_rtb_ids
 }
 
 resource "aws_vpc_endpoint" "dynamodb" {
   vpc_id       = var.vpc_id
   region       = var.region
+  vpc_endpoint_type = "Gateway"
   service_name = "com.amazonaws.eu-west-2.dynamodb"
+  route_table_ids = var.private_rtb_ids
 }

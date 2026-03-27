@@ -65,4 +65,5 @@ module "vpc-endpoints" {
   vpc_id = module.vpc.vpc_id
   region = var.region
   private_subnet_ids = module.vpc.private_subnet_ids
+  private_rtb_ids = module.vpc.private_rtb_ids
 }
