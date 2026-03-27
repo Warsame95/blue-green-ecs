@@ -10,6 +10,6 @@ output "vpc_id" {
   value = aws_vpc.main.id
 }
 
-output "private_rtb_ids" {
-  value = aws_route_table.private-rtb[*].id
+output "private_rtb_id" {
+  value = aws_route_table.private-rtb.id
 }
