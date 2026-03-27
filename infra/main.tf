@@ -59,3 +59,10 @@ module "ecs" {
   vpc_id             = module.vpc.vpc_id
   alb_sg_id          = module.alb.alb_sg_id
 }
+
+module "vpc-endpoints" {
+  source = "./modules/vpc-endpoints"
+  vpc_id = module.vpc.vpc_id
+  region = var.region
+  private_subnet_ids = module.vpc.private_subnet_ids
+}
