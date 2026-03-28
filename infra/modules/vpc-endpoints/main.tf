@@ -29,15 +29,3 @@ resource "aws_vpc_endpoint" "dynamodb" {
   service_name = "com.amazonaws.eu-west-2.dynamodb"
   route_table_ids = [var.private_rtb_id]
 }
-
-resource "aws_vpc_endpoint_route_table_association" "s3_endpoint_rtb_associations" {
-  count = 2
-  route_table_id  = var.private_rtb_id
-  vpc_endpoint_id = aws_vpc_endpoint.s3.id
-}
-
-resource "aws_vpc_endpoint_route_table_association" "dynamodb_endpoint_rtb_associations" {
-  count = 2
-  route_table_id  = var.private_rtb_id
-  vpc_endpoint_id = aws_vpc_endpoint.dynamodb.id
-}
