@@ -38,7 +38,7 @@ resource "aws_ecs_task_definition" "task" {
         logDriver = "awslogs"
         options = {
           awslogs-region        = var.region
-          awslogs-group         = "/ecs/url-shortener-task"
+          awslogs-group         = aws_cloudwatch_log_group.ecs_url_shortener.name
           awslogs-stream-prefix = "ecs"
         }
       }
@@ -74,6 +74,11 @@ resource "aws_ecs_service" "name" {
     container_port = 8080
     target_group_arn = var.target_group_arn
   }
+}
+
+resource "aws_cloudwatch_log_group" "ecs_url_shortener" {
+  name              = "/ecs/${var.app_name}-task"
+  retention_in_days = 7
 }
 
 resource "aws_security_group" "ecs-sg" {
