@@ -1,9 +1,10 @@
-resource "aws_route53_zone" "primary" {
-  name = var.domain
+data "aws_route53_zone" "zone" {
+  name         = "urlshortener.click"
+  private_zone = false
 }
 
 resource "aws_route53_record" "this" {
-  zone_id = aws_route53_zone.primary.zone_id
+  zone_id = data.aws_route53_zone.zone.zone_id
   name    = var.domain
   type    = "A"
 
