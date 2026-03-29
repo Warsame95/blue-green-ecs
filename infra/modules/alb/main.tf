@@ -8,6 +8,19 @@ resource "aws_lb" "main-alb" {
 
 }
 
+resource "aws_lb_listener" "https" {
+  load_balancer_arn = aws_lb.main-alb.arn
+  certificate_arn = var.acm_certificate_arn
+  protocol = "HTTPS"
+  port = 443
+  ssl_policy = "ELBSecurityPolicy-TLS13-1-2-Res-2021-06"
+
+  default_action {
+    type = "forward"
+    target_group_arn = aws_lb_target_group.url-service-tg.arn
+  }
+}
+
 resource "aws_lb_target_group" "url-service-tg" {
   name     = "${var.app_name}-service-tg"
   port     = 80
