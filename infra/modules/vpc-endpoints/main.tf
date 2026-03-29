@@ -3,6 +3,7 @@ resource "aws_vpc_endpoint" "ecr-api" {
   service_name = "com.amazonaws.${var.region}.api"
   vpc_endpoint_type = "Interface"
   subnet_ids = var.private_subnet_ids
+  security_group_ids = [aws_security_group.endpoint-sg.id]
 }
 
 resource "aws_vpc_endpoint" "ecr-dkr" {
@@ -10,6 +11,7 @@ resource "aws_vpc_endpoint" "ecr-dkr" {
   service_name = "com.amazonaws.${var.region}.ecr.dkr"
   vpc_endpoint_type = "Interface"
   subnet_ids = var.private_subnet_ids
+  security_group_ids = [aws_security_group.endpoint-sg.id]
 }
 
 resource "aws_vpc_endpoint" "s3" {
@@ -31,4 +33,26 @@ resource "aws_vpc_endpoint" "cloudwatch" {
   vpc_endpoint_type = "Interface"
   service_name = "com.amazonaws.${var.region}.logs"
   subnet_ids = var.private_subnet_ids
+  security_group_ids = [aws_security_group.endpoint-sg.id]
+}
+
+resource "aws_security_group" "endpoint-sg" {
+  name        = "endpoint-sg"
+  description = "Allows traffic coming from ecs"
+  vpc_id      = var.vpc_id
+
+  ingress {
+    from_port = 8080
+    protocol = "tcp"
+    to_port = 8080 
+    security_groups = [ var.ecs_sg_id ]
+  }
+
+  egress {
+    from_port = 0
+    protocol = "-1"
+    to_port = 0
+    cidr_blocks = [ "0.0.0.0/0" ]
+  }
+ 
 }
