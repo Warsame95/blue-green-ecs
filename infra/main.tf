@@ -59,6 +59,7 @@ module "ecs" {
   target_group_arn   = module.alb.target_group_arn
   vpc_id             = module.vpc.vpc_id
   alb_sg_id          = module.alb.alb_sg_id
+  repo_uri           = var.repo_uri
 }
 
 module "vpc-endpoints" {

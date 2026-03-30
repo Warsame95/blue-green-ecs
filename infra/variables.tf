@@ -44,3 +44,7 @@ variable "image_tag" {
   type = string
   default = "latest"
 }
+
+variable "repo_uri" {
+  type = string
+}

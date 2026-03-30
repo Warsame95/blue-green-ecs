@@ -33,3 +33,7 @@ variable "alb_sg_id" {
 variable "vpc_id" {
   type = string
 }
+
+variable "repo_uri" {
+  type = string
+}
