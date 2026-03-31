@@ -60,6 +60,7 @@ module "ecs" {
   vpc_id             = module.vpc.vpc_id
   alb_sg_id          = module.alb.alb_sg_id
   repo_uri           = var.repo_uri
+  dynamodb_table_name = module.dynamodb.dynamodb_table_name
 }
 
 module "vpc-endpoints" {

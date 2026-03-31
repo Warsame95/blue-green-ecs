@@ -37,3 +37,7 @@ variable "vpc_id" {
 variable "repo_uri" {
   type = string
 }
+
+variable "dynamodb_table_name" {
+  type = string
+}
