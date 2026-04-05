@@ -81,6 +81,14 @@ resource "aws_ecs_service" "name" {
     container_port = 8080
     target_group_arn = var.target_group_arn
   }
+
+  deployment_configuration {
+    strategy = "BLUE_GREEN"
+    bake_time_in_minutes = 2
+  }
+
+  wait_for_steady_state = true
+
 }
 
 resource "aws_cloudwatch_log_group" "ecs_url_shortener" {
