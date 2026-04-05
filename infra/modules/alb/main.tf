@@ -17,12 +17,55 @@ resource "aws_lb_listener" "https" {
 
   default_action {
     type = "forward"
-    target_group_arn = aws_lb_target_group.url-service-tg.arn
+    target_group_arn = aws_lb_target_group.blue.arn
   }
 }
 
-resource "aws_lb_target_group" "url-service-tg" {
-  name     = "${var.app_name}-service-tg"
+resource "aws_lb_target_group" "blue" {
+  name     = "${var.app_name}-blue-tg"
+  port     = 80
+  protocol = "HTTP"
+  vpc_id   = var.vpc_id
+  ip_address_type = "ipv4"
+  target_type = "ip"
+  
+
+  health_check {
+    enabled = true
+    healthy_threshold = 5
+    interval = 30
+    matcher = "200"
+    path = "/healthz"
+    port = "traffic-port"
+    protocol = "HTTP"
+    timeout = 5
+    unhealthy_threshold = 2
+  }
+
+  target_group_health {
+    dns_failover {
+      minimum_healthy_targets_count = "1"
+      minimum_healthy_targets_percentage = "off"
+    }
+
+    unhealthy_state_routing {
+      minimum_healthy_targets_count = 1
+      minimum_healthy_targets_percentage = "off"
+    }
+
+  }
+
+  stickiness {
+    type = "lb_cookie"
+    enabled = true
+    cookie_duration = 86400
+  }
+
+
+}
+
+resource "aws_lb_target_group" "green" {
+  name     = "${var.app_name}-green-tg"
   port     = 80
   protocol = "HTTP"
   vpc_id   = var.vpc_id

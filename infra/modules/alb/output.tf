@@ -11,7 +11,7 @@ output "alb_zone_id" {
 }
 
 output "target_group_arn" {
-  value = aws_lb_target_group.url-service-tg.arn
+  value = aws_lb_target_group.blue.arn
 }
 
 output "alb_arn" {
