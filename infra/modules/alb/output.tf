@@ -14,6 +14,10 @@ output "target_group_arn" {
   value = aws_lb_target_group.blue.arn
 }
 
+output "alternate_target_group_arn" {
+  value = aws_lb_target_group.green
+}
+
 output "alb_arn" {
   value = aws_lb.main-alb.arn
 }
