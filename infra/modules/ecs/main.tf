@@ -80,6 +80,12 @@ resource "aws_ecs_service" "name" {
     container_name = var.app_name
     container_port = 8080
     target_group_arn = var.target_group_arn
+
+    advanced_configuration {
+      production_listener_rule =var.production_listener_rule_arn
+      alternate_target_group_arn = var.alternate_target_group_arn
+      role_arn = var.blue_green_infra_role
+    }
   }
 
   deployment_configuration {

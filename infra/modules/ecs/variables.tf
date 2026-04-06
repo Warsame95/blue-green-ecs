@@ -49,3 +49,7 @@ variable "repo_uri" {
 variable "dynamodb_table_name" {
   type = string
 }
+
+variable "blue_green_infra_role" {
+  type = string
+}
