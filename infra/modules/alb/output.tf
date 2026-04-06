@@ -18,6 +18,10 @@ output "alternate_target_group_arn" {
   value = aws_lb_target_group.green
 }
 
+output "production_listener_rule_arn" {
+  value = aws_lb_listener_rule.production_listener_rule.arn
+}
+
 output "alb_arn" {
   value = aws_lb.main-alb.arn
 }
