@@ -16,7 +16,7 @@ resource "aws_lb_listener" "https" {
   ssl_policy = "ELBSecurityPolicy-TLS13-1-2-Res-2021-06"
 
   default_action {
-    type = "fixed response"
+    type = "fixed-response"
     fixed_response {
       content_type = "text/plain"
       message_body = "Not Found"
