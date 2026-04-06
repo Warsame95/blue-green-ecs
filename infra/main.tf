@@ -57,6 +57,8 @@ module "ecs" {
   image_tag = var.image_tag
   private_subnet_ids = module.vpc.private_subnet_ids
   target_group_arn   = module.alb.target_group_arn
+  alternate_target_group_arn = module.alb.alternate_target_group_arn
+  production_listener_rule_arn = module.alb.production_listener_rule_arn
   vpc_id             = module.vpc.vpc_id
   alb_sg_id          = module.alb.alb_sg_id
   repo_uri           = var.repo_uri
