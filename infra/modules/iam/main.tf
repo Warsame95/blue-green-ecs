@@ -59,3 +59,25 @@ resource "aws_iam_role_policy" "dynamodb_task" {
   role = aws_iam_role.task_role.name
   policy = data.aws_iam_policy_document.ecs_task_app.json
 }
+
+
+resource "aws_iam_role" "blue_green_role" {
+    name = "blue_green_infra_role"
+
+    assume_role_policy = jsonencode({
+    Version = "2008-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Principal = { Service = "ecs-tasks.amazonaws.com" }
+        Action = "sts:AssumeRole"
+      }
+    ]
+  })
+
+}
+
+resource "aws_iam_role_policy_attachment" "blue_green_policy" {
+  role = aws_iam_role.blue_green_role.name
+  policy_arn = var.infrastructure_policy_arn
+}

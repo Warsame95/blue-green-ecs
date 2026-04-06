@@ -13,3 +13,7 @@ variable "execution_policy_arn" {
 variable "dynamodb_table_arn" {
   type = string
 }
+
+variable "infrastructure_policy_arn" {
+  type = string
+}
