@@ -15,7 +15,7 @@ output "target_group_arn" {
 }
 
 output "alternate_target_group_arn" {
-  value = aws_lb_target_group.green
+  value = aws_lb_target_group.green.arn
 }
 
 output "production_listener_rule_arn" {
