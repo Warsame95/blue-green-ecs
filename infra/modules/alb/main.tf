@@ -30,6 +30,30 @@ resource "aws_lb_listener" "https" {
   }
 }
 
+resource "aws_lb_listener_rule" "production_listener_rule" {
+  listener_arn = aws_lb_listener.https.arn
+  priority = 100
+
+  action {
+    type = "forward"
+    forward {
+      target_group {
+        arn =  aws_lb_target_group.blue.arn
+        weight = 1
+      }
+      target_group {
+        arn = aws_lb_target_group.green
+        weight = 0
+      }
+    }
+  }
+  condition {
+    path_pattern {
+      values = ["/*"]
+    }
+  }
+}
+
 resource "aws_lb_target_group" "blue" {
   name     = "${var.app_name}-blue-tg"
   port     = 80
@@ -62,12 +86,6 @@ resource "aws_lb_target_group" "blue" {
       minimum_healthy_targets_percentage = "off"
     }
 
-  }
-
-  stickiness {
-    type = "lb_cookie"
-    enabled = true
-    cookie_duration = 86400
   }
 
 
@@ -105,12 +123,6 @@ resource "aws_lb_target_group" "green" {
       minimum_healthy_targets_percentage = "off"
     }
 
-  }
-
-  stickiness {
-    type = "lb_cookie"
-    enabled = true
-    cookie_duration = 86400
   }
 
 
