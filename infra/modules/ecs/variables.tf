@@ -26,6 +26,14 @@ variable "target_group_arn" {
   type = string
 }
 
+variable "alternate_target_group_arn" {
+  type = string
+}
+
+variable "production_listener_rule_arn" {
+  type = string
+}
+
 variable "alb_sg_id" {
   type = string
 }
