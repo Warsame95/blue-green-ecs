@@ -35,6 +35,11 @@ variable "execution_policy_arn" {
   default = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
 
+variable "infrastructure_policy_arn" {
+  type = string
+  default = "arn:aws:iam::aws:policy/AmazonECSInfrastructureRolePolicyForLoadBalancers"
+}
+
 variable "task_role_name" {
   type = string
   default = "ecsTaskRole"

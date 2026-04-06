@@ -39,7 +39,7 @@ module "iam" {
   execution_policy_arn = var.execution_policy_arn
   task_role_name = var.task_role_name
   dynamodb_table_arn = module.dynamodb.dynamodb_table_arn
-  
+  infrastructure_policy_arn = var.infrastructure_policy_arn
 }
 
 module "dynamodb" {
@@ -63,6 +63,7 @@ module "ecs" {
   alb_sg_id          = module.alb.alb_sg_id
   repo_uri           = var.repo_uri
   dynamodb_table_name = module.dynamodb.dynamodb_table_name
+  blue_green_infra_role = module.iam.blue_green_infra_role
 }
 
 module "vpc-endpoints" {
