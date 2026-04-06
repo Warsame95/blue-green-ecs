@@ -37,7 +37,7 @@ resource "aws_lb_listener_rule" "production_listener_rule" {
         weight = 1
       }
       target_group {
-        arn = aws_lb_target_group.green
+        arn = aws_lb_target_group.green.arn
         weight = 0
       }
     }
