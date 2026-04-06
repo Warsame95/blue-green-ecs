@@ -16,17 +16,7 @@ resource "aws_lb_listener" "https" {
   ssl_policy = "ELBSecurityPolicy-TLS13-1-2-Res-2021-06"
 
   default_action {
-    type = "forward"
-    forward {
-      target_group {
-        arn    = aws_lb_target_group.blue.arn
-        weight = 1
-      }
-      target_group {
-        arn    = aws_lb_target_group.green.arn
-        weight = 0
-      }
-    }
+    type = "fixed response"
   }
 }
 
