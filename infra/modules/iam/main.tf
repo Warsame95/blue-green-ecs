@@ -69,7 +69,7 @@ resource "aws_iam_role" "blue_green_role" {
     Statement = [
       {
         Effect = "Allow"
-        Principal = { Service = "ecs-tasks.amazonaws.com" }
+        Principal = { Service = "ecs.amazonaws.com" }
         Action = "sts:AssumeRole"
       }
     ]
