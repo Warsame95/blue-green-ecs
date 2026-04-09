@@ -34,7 +34,7 @@ resource "aws_lb_listener_rule" "production_listener_rule" {
     forward {
       target_group {
         arn =  aws_lb_target_group.blue.arn
-        weight = 1
+        weight = 100
       }
       target_group {
         arn = aws_lb_target_group.green.arn
@@ -47,11 +47,15 @@ resource "aws_lb_listener_rule" "production_listener_rule" {
       values = ["/*"]
     }
   }
+
+  lifecycle {
+    ignore_changes = all
+  }
 }
 
 resource "aws_lb_target_group" "blue" {
   name     = "${var.app_name}-blue-tg"
-  port     = 80
+  port     = 8080
   protocol = "HTTP"
   vpc_id   = var.vpc_id
   ip_address_type = "ipv4"
@@ -60,15 +64,17 @@ resource "aws_lb_target_group" "blue" {
 
   health_check {
     enabled = true
-    healthy_threshold = 5
-    interval = 30
+    healthy_threshold = 2
+    interval = 5
     matcher = "200"
     path = "/healthz"
     port = "traffic-port"
     protocol = "HTTP"
-    timeout = 5
+    timeout = 4
     unhealthy_threshold = 2
   }
+
+  deregistration_delay = 5
 
   target_group_health {
     dns_failover {
@@ -88,7 +94,7 @@ resource "aws_lb_target_group" "blue" {
 
 resource "aws_lb_target_group" "green" {
   name     = "${var.app_name}-green-tg"
-  port     = 80
+  port     = 8080
   protocol = "HTTP"
   vpc_id   = var.vpc_id
   ip_address_type = "ipv4"
@@ -97,15 +103,17 @@ resource "aws_lb_target_group" "green" {
 
   health_check {
     enabled = true
-    healthy_threshold = 5
-    interval = 30
+    healthy_threshold = 2
+    interval = 5
     matcher = "200"
     path = "/healthz"
     port = "traffic-port"
     protocol = "HTTP"
-    timeout = 5
+    timeout = 4
     unhealthy_threshold = 2
   }
+
+  deregistration_delay = 5
 
   target_group_health {
     dns_failover {
