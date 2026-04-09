@@ -17,7 +17,7 @@ variable "az" {
 }
 
 variable "app_name" {
-  type = string
+  type    = string
   default = "url-shortener"
 }
 
@@ -36,17 +36,17 @@ variable "execution_policy_arn" {
 }
 
 variable "infrastructure_policy_arn" {
-  type = string
+  type    = string
   default = "arn:aws:iam::aws:policy/AmazonECSInfrastructureRolePolicyForLoadBalancers"
 }
 
 variable "task_role_name" {
-  type = string
+  type    = string
   default = "ecsTaskRole"
 }
 
 variable "image_tag" {
-  type = string
+  type    = string
   default = "latest"
 }
 
