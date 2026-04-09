@@ -82,7 +82,7 @@ resource "aws_ecs_service" "name" {
     target_group_arn = var.target_group_arn
 
     advanced_configuration {
-      production_listener_rule =var.production_listener_rule_arn
+      production_listener_rule = var.production_listener_rule_arn
       alternate_target_group_arn = var.alternate_target_group_arn
       role_arn = var.blue_green_infra_role
     }
