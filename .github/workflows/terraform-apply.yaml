@@ -2,11 +2,11 @@ name: Terraform Apply
 
 on:
   workflow_dispatch:
-  inputs:
-    image_tag:
-    description: Docker image tag to deploy
-    required: true
-    type: string
+    inputs:
+      image_tag:
+      description: Docker image tag to deploy
+      required: true
+      type: string
 
 permissions:
   id-token: write
