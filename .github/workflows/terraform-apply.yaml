@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       image_tag:
-      description: Docker image tag to deploy
-      required: true
-      type: string
+        description: Docker image tag to deploy
+        required: true
+        type: string
 
 permissions:
   id-token: write
