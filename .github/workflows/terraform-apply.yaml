@@ -49,4 +49,6 @@ jobs:
         working-directory: ${{ env.TF_WORKING_DIR }}
         env: 
           IMAGE_TAG: ${{ inputs.image_tag }}
+          ECR_REGISTRY: 932175181322.dkr.ecr.eu-west-2.amazonaws.com
+          ECR_REPOSITORY: url-shortener/api
         run: terraform apply -auto-approve -var="container_image=${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}" 
