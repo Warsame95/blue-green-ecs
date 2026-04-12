@@ -47,4 +47,6 @@ jobs:
 
       - name: Terraform Apply
         working-directory: ${{ env.TF_WORKING_DIR }}
-        run: terraform apply -auto-approve -var="image_tag=${ECR_REGISTRY}/${ECR_REPOSITORY}:${{inputs.image_tag}}" 
+        env: 
+          IMAGE_TAG: {{ inputs.image_tag }}
+        run: terraform apply -auto-approve -var="container_image=${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}" 
