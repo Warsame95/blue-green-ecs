@@ -45,7 +45,7 @@ variable "task_role_name" {
   default = "ecsTaskRole"
 }
 
-variable "image_tag" {
+variable "container_image" {
   type    = string
   default = "latest"
 }

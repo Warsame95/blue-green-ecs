@@ -14,7 +14,7 @@ variable "task_role_arn" {
   type = string
 }
 
-variable "image_tag" {
+variable "container_image" {
   type = string
 }
 
