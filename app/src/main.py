@@ -19,7 +19,7 @@ def home():
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                background-color: #1e293b;
+                background-color: #3b1e35;
                 font-family: Arial, sans-serif;
                 color: #f8fafc;
             }
