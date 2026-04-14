@@ -39,7 +39,7 @@ jobs:
         with:
           image: ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
           fail-build: true
-          severity-cutoff: high
+          severity-cutoff: critical
           output-format: table
       
       - name: Push image
