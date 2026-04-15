@@ -47,3 +47,16 @@ blue-green-ecs/
 
 ```
 
+## Design Choices
+
+### Blue/Green Deployment Strategy
+
+Native ECS blue/green deployments were chosen to reduce release risk and minimise downtime. New versions are deployed to an inactive environment before production traffic is shifted.
+
+### VPC Endpoints Instead of NAT Gateway
+
+VPC Endpoints were used to allow private access to ECR, CloudWatch Logs, S3, and DynamoDB without internet egress. This reduces cost and keeps service traffic within the AWS network.
+
+### DynamoDB for URL Storage
+
+DynamoDB was selected because the application mainly performs simple key-value lookups between short codes and original URLs. It provides low-latency performance, automatic scaling, and no database server management.
