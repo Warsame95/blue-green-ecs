@@ -60,3 +60,45 @@ VPC Endpoints were used to allow private access to ECR, CloudWatch Logs, S3, and
 ### DynamoDB for URL Storage
 
 DynamoDB was selected because the application mainly performs simple key-value lookups between short codes and original URLs. It provides low-latency performance, automatic scaling, and no database server management.
+
+
+## Running the Application Locally
+
+### Requirements
+
+- Docker
+- Docker Compose (v2)
+
+### Setup Environment Variables
+
+Create a `.env` file in the project root:
+
+```bash
+touch .env
+```
+Add the following variables:
+
+```
+AWS_REGION=eu-west-2
+DYNAMODB_TABLE=my_db
+```
+### Start the Application
+
+From app/, run:
+
+```bash
+docker compose up 
+```
+The application will be available at:
+
+```
+http://localhost:8080
+```
+
+### Stop the Application
+
+```bash
+docker compose down 
+```
+
+
