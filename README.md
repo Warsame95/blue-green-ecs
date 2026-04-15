@@ -1,4 +1,4 @@
-# URL Shortener on AWS ECS
+# URL Shortener on AWS ECS with Blue/Green Releases
 
 This project is a production-style URL shortener application built with FastAPI, containerised with Docker, and deployed on Amazon ECS Fargate using Terraform.
 The platform was designed to reflect real-world cloud engineering practices, with a strong focus on secure networking, repeatable infrastructure, and zero-downtime deployments.
@@ -100,5 +100,22 @@ http://localhost:8080
 ```bash
 docker compose down 
 ```
+
+## CI/CD workflows
+- **Build and Push to ECR**
+<img width="1027" height="673" alt="Screenshot 2026-04-15 at 15 31 55" src="https://github.com/user-attachments/assets/c3a5d926-256a-4d41-9e57-d4c331b44e1c" />
+
+- **Terraform Plan**
+<img width="1030" height="662" alt="Screenshot 2026-04-15 at 15 42 19" src="https://github.com/user-attachments/assets/09685081-761b-4460-a029-54c627a97c36" />
+
+- **Terraform Apply**
+<img width="1082" height="545" alt="Screenshot 2026-04-15 at 15 56 06" src="https://github.com/user-attachments/assets/4feb914e-3c15-42fa-bae4-f5071498e686" />
+
+- **Terraform Destroy**
+<img width="1036" height="626" alt="Screenshot 2026-04-15 at 16 08 47" src="https://github.com/user-attachments/assets/9cdf6f00-cdda-4b00-ba44-bc2fb4f79b90" />
+
+## Screenshots
+
+<img width="1338" height="749" alt="Screenshot 2026-04-15 at 16 21 49" src="https://github.com/user-attachments/assets/5f9b832b-82ed-41ea-a930-4b5824adf652" />
 
 
