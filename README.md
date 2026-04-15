@@ -23,3 +23,27 @@ It includes blue/green deployments, private networking with VPC endpoints, and A
 
 <img width="2460" height="1423" alt="ecs v2" src="https://github.com/user-attachments/assets/244e66e2-7baa-49ad-abf5-b74dac92abba" />
 
+## Project Structure
+
+```text
+blue-green-ecs/
+├── .github/workflows/
+│   ├── deploy.yaml
+│   ├── terraform-plan.yaml
+│   ├── terraform-apply.yaml
+│   └── terraform-destroy.yaml
+├── app/
+│   ├── src/
+│   ├── tests/
+│   ├── Dockerfile
+│   └── compose.yaml
+├── infra/
+│   ├── modules/
+│   ├── main.tf
+│   ├── output.tf
+│   └── variables.tf
+├── .gitignore
+└── README.md
+
+```
+
