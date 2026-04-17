@@ -21,7 +21,8 @@ It includes blue/green deployments, private networking with VPC endpoints, and A
 
 ## Architecture Diagram
 
-<img width="2460" height="1423" alt="ecs v2" src="https://github.com/user-attachments/assets/244e66e2-7baa-49ad-abf5-b74dac92abba" />
+<img width="2360" height="1423" alt="ecs v2" src="https://github.com/user-attachments/assets/0d3a373f-a7c6-443c-90e0-95c96d0a8faf" />
+
 
 ## Project Structure
 
