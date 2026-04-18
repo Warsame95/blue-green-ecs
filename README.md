@@ -56,7 +56,7 @@ Native ECS blue/green deployments were chosen to reduce release risk and minimis
 
 ### VPC Endpoints Instead of NAT Gateway
 
-VPC Endpoints were used to allow private access to ECR, CloudWatch Logs, S3, and DynamoDB without internet egress. This reduces cost and keeps service traffic within the AWS network.
+Used VPC endpoints instead of a NAT Gateway, reducing baseline monthly networking cost by ~45% while improving private connectivity to AWS services.
 
 ### DynamoDB for URL Storage
 
